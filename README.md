@@ -17,13 +17,14 @@ Created By:
   * 'names.txt': This file contains a list of names. 
     * These names will be read in initially when starting up the bot.
   * 'partners.csv': This file will contain the pairs after '?pair' is called.
+    * This file will be sent when using the command '?pairings file'.
+
+* Requirements
+  * You must be using Python 3.5 or later.
 
 ---
 
 ## Instructions
-
-* Requirements
-  * You must be using Python 3.5 or later.
 
 1. Start by cloning the the repository using 'git clone'.
 2. After cloning the repository, go to the Discord Developer site.
