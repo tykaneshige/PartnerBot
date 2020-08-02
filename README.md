@@ -26,6 +26,8 @@ Created By:
 
 ## Instructions
 
+**FOR DISCORD**
+
 1. Start by cloning the the repository using 'git clone'.
 2. After cloning the repository, go to the Discord Developer site.
    1. This can be accessed by searching up 'Discord SDK' on Google.
@@ -41,8 +43,8 @@ Created By:
 9. After adding the bot to your server, go back to the Discord Developer site.
 10. Go back to the bot you created, and click on 'Bot'.
 11. Scroll down to find the bot's token (which should be hidden).
-12. Copy the token and insert it in PartnerBot.py where it says, "Insert Token Here".
-13. Start the bot by running the command 'python3 PartnerBot.py' (python3 is necessary).
+12. Copy the token and insert it in PartnerBot_Discord.py where it says, "Insert Token Here".
+13. Start the bot by running the command 'python3 PartnerBot_Discord.py' (python3 is necessary).
 14. The command line should state that the bot is logged in. Verify by texting '?ping' in your server.
 15. If the bot responds with 'pong!', then it is ready to be used!
 

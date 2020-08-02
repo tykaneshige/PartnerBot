@@ -66,6 +66,9 @@ class PartnerBot(commands.Cog):
         except:
             await ctx.send('Error adding names.')
 
+        # Write names to csv file
+        self.ps.write_names()
+
     # Removes names from prayersheet object (but not from txt file)
     @commands.command()
     async def remove(self, ctx, *args):
@@ -86,6 +89,9 @@ class PartnerBot(commands.Cog):
             await ctx.send('Names successfully removed.')
         except:
             await ctx.send('Error removing names.')
+
+        # Write names to csv file
+        self.ps.write_names()
 
     # List all members to be paired
     @commands.command()

@@ -182,10 +182,8 @@ class PrayerSheet:
                 if counter == numMembers:
                     complete = True
 
-        # Write the partners to a csv file
-        with open(self.write_file, 'w') as fd:
-            for key in self.members:
-                fd.write('{},{}\n'.format(key, self.partners[key]))
+        # Write names to csv file
+        self.write_names()
 
     # Clears pairings
     def clear(self):
@@ -224,7 +222,11 @@ class PrayerSheet:
             self.partners[str(partner1)] = name2
             self.partners[str(partner2)] = name1
 
-        # Write the partners to a csv file
+        # Write names to csv file
+        self.write_names()
+
+    # Write the partners to a csv file
+    def write_names(self):
         with open(self.write_file, 'w') as fd:
             for key in self.members:
                 fd.write('{},{}\n'.format(key, self.partners[key]))
