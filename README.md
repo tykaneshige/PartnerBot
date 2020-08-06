@@ -1,10 +1,10 @@
 # Partner Bot
 
-A simple program used to create pairs from a list of names. 
-The original purpose of this program was to make prayer partners from a list of names.
-
 Created By: 
 *Thomas Kaneshige (tykaneshige.work@gmail.com)*
+
+A simple program used to create pairs from a list of names. 
+The original purpose of this program was to make prayer partners from a list of names.
 
 ---
 
@@ -102,6 +102,8 @@ More detailed instructions can be found [here](https://medium.com/@ritikjain1272
 
 -?exit: Disconnects the bot.
 ```
+
+---
 
 ## Open Issues
 
