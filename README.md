@@ -1,4 +1,4 @@
-# Prayer Partners
+# Partner Bot
 
 A simple program used to create prayer partners from a list of names.
 
