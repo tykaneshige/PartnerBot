@@ -1,6 +1,7 @@
 # Partner Bot
 
-A simple program used to create pairs from a list of names.
+A simple program used to create pairs from a list of names. 
+The original purpose of this program was to make prayer partners from a list of names.
 
 Created By: 
 *Thomas Kaneshige (tykaneshige.work@gmail.com)*
