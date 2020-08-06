@@ -185,7 +185,7 @@ class PartnerBot(commands.Cog):
     # Exit commands
     @commands.command()
     async def exit(self, ctx):
-        await ctx.send('Shutting down.')
+        await ctx.send('Beep boop.')
         await self.bot.close()
 
         if self.bot.is_closed():
