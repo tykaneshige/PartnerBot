@@ -11,9 +11,6 @@ write_file = 'files/partners.csv'
 
 ps = PrayerSheet(read_file, write_file)
 
-article = 'https://medium.com/@ritikjain1272/how-to-make-a-slack-bot-in-python-using-slacks-rtm-api-335b393563cd'
-classic = 'https://api.slack.com/apps?new_classic_app=1'
-
 # Basic Connection Test
 def ping(web_client, channel_id):
     web_client.chat_postMessage(channel=channel_id, text='pong!')
