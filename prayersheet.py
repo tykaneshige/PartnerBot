@@ -28,39 +28,6 @@ class PrayerSheet:
         # Alphabetize names
         self.alphabetize_names(self.members)
 
-    # Alphabetizes the list of members
-    def alphabetize_names(self, arr):
-
-        if len(arr) > 1:
-
-            midpoint = math.floor(len(arr) / 2)
-            left = arr[:midpoint]
-            right = arr[midpoint:]
-
-            self.alphabetize_names(left)
-            self.alphabetize_names(right)
-
-            l = r = i = 0
-
-            while l < len(left) and r < len(right):
-                if left[l] < right[r]:
-                    arr[i] = left[l]
-                    l += 1
-                else:
-                    arr[i] = right[r]
-                    r += 1
-                i += 1
-
-            while l < len(left):
-                arr[i] = left[l]
-                l += 1
-                i += 1
-            
-            while r < len(right):
-                arr[i] = right[r]
-                r += 1
-                i += 1
-
     # Add any number of names
     def add_names(self, names):
 
@@ -72,6 +39,9 @@ class PrayerSheet:
 
         # Alphabetize names
         self.alphabetize_names(self.members)
+
+        # Write names to csv file
+        self.write_names()
 
     # Remove any number of names
     def remove_names(self, names):
@@ -85,6 +55,9 @@ class PrayerSheet:
         for key,value in self.partners.items():
             if value in names:
                 self.partners[key] = 'None'
+
+        # Write names to csv file
+        self.write_names()
 
     # Randomize members
     def randomize(self):
@@ -225,8 +198,41 @@ class PrayerSheet:
         # Write names to csv file
         self.write_names()
 
+    # Alphabetizes the list of members using mergesort
+    def alphabetize_names(self, arr):
+
+        if len(arr) > 1:
+
+            midpoint = math.floor(len(arr) / 2)
+            left = arr[:midpoint]
+            right = arr[midpoint:]
+
+            self.alphabetize_names(left)
+            self.alphabetize_names(right)
+
+            l = r = i = 0
+
+            while l < len(left) and r < len(right):
+                if left[l] < right[r]:
+                    arr[i] = left[l]
+                    l += 1
+                else:
+                    arr[i] = right[r]
+                    r += 1
+                i += 1
+
+            while l < len(left):
+                arr[i] = left[l]
+                l += 1
+                i += 1
+            
+            while r < len(right):
+                arr[i] = right[r]
+                r += 1
+                i += 1
+
     # Write the partners to a csv file
     def write_names(self):
         with open(self.write_file, 'w') as fd:
             for key in self.members:
-                fd.write('{},{}\n'.format(key, self.partners[key]))
+                fd.write('{},{}\n'.format(key, self.partners.get(key,'None')))

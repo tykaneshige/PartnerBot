@@ -6,6 +6,8 @@ import os
 
 from discord.ext import commands
 
+token = 'Insert Token Here'
+
 read_file = 'files/names.txt'
 write_file = 'files/partners.csv'
 
@@ -36,7 +38,7 @@ class PartnerBot(commands.Cog):
     async def ping(self, ctx):
         await ctx.send('pong!')
 
-    # Loads the names available on the text file
+    # Loads all names available on the text file
     @commands.command()
     async def load(self, ctx):
 
@@ -50,7 +52,7 @@ class PartnerBot(commands.Cog):
         except:
             await ctx.send('Error loading names.')
 
-    # Adds names to prayersheet object (but not from txt file)
+    # Adds names to prayersheet object (but not to the txt file)
     @commands.command()
     async def add(self, ctx, *args):
 
@@ -65,9 +67,6 @@ class PartnerBot(commands.Cog):
             await ctx.send('Names successfully added.')
         except:
             await ctx.send('Error adding names.')
-
-        # Write names to csv file
-        self.ps.write_names()
 
     # Removes names from prayersheet object (but not from txt file)
     @commands.command()
@@ -90,9 +89,6 @@ class PartnerBot(commands.Cog):
         except:
             await ctx.send('Error removing names.')
 
-        # Write names to csv file
-        self.ps.write_names()
-
     # List all members to be paired
     @commands.command()
     async def list(self, ctx):
@@ -105,13 +101,14 @@ class PartnerBot(commands.Cog):
         for name in self.ps.members:
             await ctx.send(str(name) + '\n')
 
-    # Randomize names
+    # Pair names
     @commands.command()
     async def pair(self, ctx):
         
         # Verify that the number of members is greater than 0
         if len(self.ps.members) == 0:
             await ctx.send('There are no members to pair!')
+            return
 
         try:
             self.ps.randomize()
@@ -138,10 +135,7 @@ class PartnerBot(commands.Cog):
                 return
 
         try:
-            # Write to the server
             for key in self.ps.members:
-                if key not in self.ps.partners:
-                    continue
                 await ctx.send('{}: {}'.format(key,self.ps.partners[key]))
         except:
             await ctx.send('Error listing pairings.')
@@ -163,7 +157,12 @@ class PartnerBot(commands.Cog):
         # Check if two names were passed
         if len(args) != 2:
             await ctx.send('Please pass *two* names.')
+            return
         
+        if len(self.ps.partners) == 0:
+            await ctx.send('There are no pairs yet.')
+            return
+
         n1 = args[0]
         n2 = args[1]
 
@@ -183,7 +182,6 @@ class PartnerBot(commands.Cog):
         except:
             await ctx.send('Error swapping names.')
 
-
     # Exit commands
     @commands.command()
     async def exit(self, ctx):
@@ -198,4 +196,4 @@ class PartnerBot(commands.Cog):
 # Main function
 if __name__ == '__main__':
     bot.add_cog(PartnerBot(bot))
-    bot.run('Insert Token Here')
+    bot.run(token)
